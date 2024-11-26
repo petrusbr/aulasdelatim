@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const articles = {
+  'importancia-latim-direito': {
+    title: 'A Importância do Latim para Estudantes de Direito',
+    description: 'Descubra como o conhecimento do latim pode impulsionar sua carreira jurídica e melhorar sua compreensão dos termos legais.',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80',
+    date: '2024-01-24',
+    content: `
+      <h2>Por que o Latim é Fundamental no Direito?</h2>
+      <p>O latim continua sendo uma ferramenta essencial para profissionais do Direito. A linguagem jurídica está repleta de expressões latinas que carregam significados precisos e fundamentais para a interpretação das leis.</p>
+
+      <h3>Benefícios do Latim no Estudo do Direito</h3>
+      <ul>
+        <li>Melhor compreensão dos princípios jurídicos</li>
+        <li>Interpretação mais precisa de documentos legais</li>
+        <li>Domínio da terminologia jurídica</li>
+        <li>Vantagem competitiva no mercado de trabalho</li>
+      </ul>
+
+      <h3>Aplicações Práticas</h3>
+      <p>No dia a dia do profissional do Direito, o conhecimento do latim permite uma compreensão mais profunda de conceitos como "habeas corpus", "due process of law" e "pacta sunt servanda".</p>
+    `
+  },
+  'latim-desenvolvimento-cognitivo': {
+    title: 'Como o Latim Melhora o Desenvolvimento Cognitivo',
+    description: 'Estudos mostram que aprender latim pode aumentar capacidades cognitivas e melhorar o desempenho acadêmico.',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80',
+    date: '2024-01-23',
+    content: `
+      <h2>O Impacto do Latim no Cérebro</h2>
+      <p>Pesquisas recentes demonstram que o estudo do latim estimula áreas do cérebro responsáveis pela memória, lógica e resolução de problemas.</p>
+
+      <h3>Benefícios Cognitivos</h3>
+      <ul>
+        <li>Melhoria na memória de trabalho</li>
+        <li>Desenvolvimento do pensamento analítico</li>
+        <li>Aumento da capacidade de concentração</li>
+        <li>Aprimoramento das habilidades de dedução</li>
+      </ul>
+
+      <h3>Resultados Acadêmicos</h3>
+      <p>Estudantes de latim frequentemente apresentam melhor desempenho em testes padronizados e maior facilidade no aprendizado de outras línguas.</p>
+    `
+  }
+};
+
+export function getStaticPaths() {
+  return Object.keys(articles).map(slug => ({
+    params: { slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const article = articles[slug];
+---
+
+<Layout
+  title={`${article.title} | Aulas de Latim`}
+  description={article.description}
+>
+  <Navigation />
+  <main>
+    <article class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <img
+            src={article.image}
+            alt={article.title}
+            class="w-full h-96 object-cover rounded-lg mb-8"
+          />
+          <h1 class="text-4xl font-bold mb-4">{article.title}</h1>
+          <p class="text-gray-600 mb-8">
+            {new Date(article.date).toLocaleDateString('pt-BR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </p>
+          <div class="prose max-w-none" set:html={article.content} />
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .prose {
+    @apply text-gray-800;
+  }
+  .prose h2 {
+    @apply text-3xl font-bold mb-6 mt-12;
+  }
+  .prose h3 {
+    @apply text-2xl font-bold mb-4 mt-8;
+  }
+  .prose p {
+    @apply mb-6 text-lg;
+  }
+  .prose ul {
+    @apply list-disc pl-6 mb-6 text-lg;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+</style>

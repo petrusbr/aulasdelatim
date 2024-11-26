@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const articles = [
+  {
+    slug: 'importancia-latim-direito',
+    title: 'A Importância do Latim para Estudantes de Direito',
+    description: 'Descubra como o conhecimento do latim pode impulsionar sua carreira jurídica e melhorar sua compreensão dos termos legais.',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80',
+    date: '2024-01-24'
+  },
+  {
+    slug: 'latim-desenvolvimento-cognitivo',
+    title: 'Como o Latim Melhora o Desenvolvimento Cognitivo',
+    description: 'Estudos mostram que aprender latim pode aumentar capacidades cognitivas e melhorar o desempenho acadêmico.',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80',
+    date: '2024-01-23'
+  },
+  {
+    slug: 'latim-literatura-classica',
+    title: 'Latim: A Chave para a Literatura Clássica',
+    description: 'Explore as obras-primas da literatura latina em sua forma original e entenda por que isso é importante.',
+    image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80',
+    date: '2024-01-22'
+  },
+  {
+    slug: 'beneficios-aprender-latim',
+    title: '5 Benefícios Surpreendentes de Aprender Latim',
+    description: 'Descubra como o estudo do latim pode melhorar seu vocabulário, raciocínio lógico e compreensão de outras línguas.',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80',
+    date: '2024-01-21'
+  },
+  {
+    slug: 'latim-mundo-moderno',
+    title: 'O Latim no Mundo Moderno: Por Que Ainda é Relevante?',
+    description: 'Entenda a importância do latim na era digital e como ele continua influenciando nossa cultura.',
+    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80',
+    date: '2024-01-20'
+  }
+];
+---
+
+<Layout
+  title="Artigos sobre Latim | Blog Aulas de Latim"
+  description="Aprenda mais sobre a língua latina, seus benefícios e aplicações no mundo moderno através de nossos artigos especializados."
+>
+  <Navigation />
+  <main>
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold text-center mb-12">Artigos sobre Latim</h1>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((article) => (
+            <ArticleCard {...article} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

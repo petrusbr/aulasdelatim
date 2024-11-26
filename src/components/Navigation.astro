@@ -1,0 +1,83 @@
+---
+import { useState } from 'react';
+---
+
+<nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="font-serif text-2xl font-bold text-primary">
+        Aulas de Latim
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-secondary">Início</a>
+        <a href="/sobre" class="text-gray-700 hover:text-secondary">Sobre</a>
+        <a href="/artigos" class="text-gray-700 hover:text-secondary">Artigos</a>
+        <a href="/contato" class="text-gray-700 hover:text-secondary">Contato</a>
+        <a 
+          href="/contato" 
+          class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+        >
+          Agende Agora
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden flex items-center"
+        aria-label="Menu"
+      >
+        <svg 
+          class="w-6 h-6" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div 
+      id="mobile-menu"
+      class="hidden md:hidden pb-4"
+    >
+      <div class="flex flex-col space-y-4">
+        <a href="/" class="text-gray-700 hover:text-secondary">Início</a>
+        <a href="/sobre" class="text-gray-700 hover:text-secondary">Sobre</a>
+        <a href="/artigos" class="text-gray-700 hover:text-secondary">Artigos</a>
+        <a href="/contato" class="text-gray-700 hover:text-secondary">Contato</a>
+        <a 
+          href="/contato" 
+          class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 inline-block text-center"
+        >
+          Agende Agora
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
+
+<style>
+  nav {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+</style>
